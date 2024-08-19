@@ -31,17 +31,17 @@ export default function SignUpPage() {
     reset();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Card className="mx-auto max-w-md">
-        <CardHeader>
-          <CardTitle className="text-3xl font-semibold text-center">
-            Sign Up
-          </CardTitle>
-          <CardDescription className="text-center">
-            Enter your information to create an account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+    <Card className="mx-auto max-w-md">
+      <CardHeader>
+        <CardTitle className="text-3xl font-semibold text-center">
+          Sign Up
+        </CardTitle>
+        <CardDescription className="text-center">
+          Enter your information to create an account
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-4 w-96">
             <div className="grid gap-2 text">
               <Label className="text-xl" htmlFor="first-name">
@@ -108,14 +108,15 @@ export default function SignUpPage() {
               Create an account
             </Button>
           </div>
-          <div className="mt-4 text-center text-lg">
-            Already have an account?{" "}
-            <Link to={"/login"} className="underline">
-              Log in
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-    </form>
+        </form>
+
+        <div className="mt-4 text-center text-lg">
+          Already have an account?{" "}
+          <Link to={"/login"} className="underline">
+            Log in
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
