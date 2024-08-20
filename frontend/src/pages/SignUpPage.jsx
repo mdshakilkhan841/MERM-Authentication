@@ -30,6 +30,7 @@ export default function SignUpPage() {
 
   const password = watch("password");
   const onSubmit = (data) => {
+    data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
     console.log(data);
     reset();
   };
