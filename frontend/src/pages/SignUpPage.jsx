@@ -33,7 +33,7 @@ export default function SignUpPage() {
   return (
     <Card className="mx-auto max-w-lg">
       <CardHeader>
-        <CardTitle className="text-3xl font-semibold text-center">
+        <CardTitle className="sm:text-3xl text-xl font-semibold text-center">
           Sign Up
         </CardTitle>
         <CardDescription className="text-center">
@@ -44,12 +44,12 @@ export default function SignUpPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-4 sm:w-96">
             <div className="grid gap-2 text">
-              <Label className="text-xl" htmlFor="first-name">
+              <Label className="sm:text-xl" htmlFor="first-name">
                 Full name
               </Label>
               <Input
                 {...register("name", { required: "Name is required" })}
-                className="text-base"
+                className="sm:text-base"
                 id="first-name"
                 placeholder="Max"
               />
@@ -60,7 +60,7 @@ export default function SignUpPage() {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="text-xl" htmlFor="email">
+              <Label className="sm:text-xl" htmlFor="email">
                 Email
               </Label>
               <Input
@@ -71,7 +71,7 @@ export default function SignUpPage() {
                     message: "Please enter a valid email address",
                   },
                 })}
-                className="text-base"
+                className="sm:text-base"
                 id="email"
                 type="email"
                 placeholder="m@example.com"
@@ -83,7 +83,7 @@ export default function SignUpPage() {
               )}
             </div>
             <div className="grid gap-2">
-              <Label className="text-xl" htmlFor="password">
+              <Label className="sm:text-xl" htmlFor="password">
                 Password
               </Label>
               <Input
@@ -94,7 +94,7 @@ export default function SignUpPage() {
                     message: "Password must be at least 6 characters long",
                   },
                 })}
-                className="text-base"
+                className="sm:text-base"
                 id="password"
                 type="password"
               />
@@ -104,13 +104,13 @@ export default function SignUpPage() {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full text-lg mt-2">
+            <Button type="submit" className="w-full sm:text-lg mt-2">
               Create an account
             </Button>
           </div>
         </form>
 
-        <div className="mt-4 text-center text-lg">
+        <div className="mt-4 text-center sm:text-lg text-sm">
           Already have an account?{" "}
           <Link to={"/login"} className="underline">
             Log in
