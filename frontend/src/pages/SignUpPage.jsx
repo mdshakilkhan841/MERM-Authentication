@@ -11,12 +11,14 @@ import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import PasswordStrengthMeter from "@/components/PasswordStrengthMeter";
 
 export default function SignUpPage() {
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -26,6 +28,7 @@ export default function SignUpPage() {
     },
   });
 
+  const password = watch("password");
   const onSubmit = (data) => {
     console.log(data);
     reset();
@@ -104,7 +107,8 @@ export default function SignUpPage() {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full sm:text-lg mt-2">
+            <PasswordStrengthMeter password={password} />
+            <Button type="submit" className="w-full sm:text-lg">
               Create an account
             </Button>
           </div>
