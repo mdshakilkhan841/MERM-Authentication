@@ -34,18 +34,17 @@ const PasswordCriteria = ({ password }) => {
   );
 };
 
+const calculateStrength = (password) => {
+  let strength = 0;
+  if (password.length >= 6) strength++;
+  if (/[A-Z]/.test(password) && /[a-z]/.test(password)) strength++;
+  if (/[0-9]/.test(password)) strength++;
+  if (/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password)) strength++;
+  return strength;
+};
+
 const PasswordStrengthMeter = ({ password }) => {
-  const calculateStrength = () => {
-    let strength = 0;
-    if (password.length >= 6) strength++;
-    if (/[A-Z]/.test(password) && /[a-z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password)) strength++;
-    return strength;
-  };
-
-  const strength = calculateStrength();
-
+  const strength = calculateStrength(password);
   const strengthText = ["Too weak", "Weak", "Fair", "Good", "Strong"][strength];
   const strengthColors = [
     "bg-red-500",
