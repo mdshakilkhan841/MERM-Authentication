@@ -31,7 +31,7 @@ export default function SignUpPage() {
     reset();
   };
   return (
-    <Card className="mx-auto max-w-md">
+    <Card className="mx-auto max-w-lg">
       <CardHeader>
         <CardTitle className="text-3xl font-semibold text-center">
           Sign Up
@@ -42,7 +42,7 @@ export default function SignUpPage() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid gap-4 w-96">
+          <div className="grid gap-4 sm:w-96">
             <div className="grid gap-2 text">
               <Label className="text-xl" htmlFor="first-name">
                 Full name
@@ -104,7 +104,7 @@ export default function SignUpPage() {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full text-lg">
+            <Button type="submit" className="w-full text-lg mt-2">
               Create an account
             </Button>
           </div>
