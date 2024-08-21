@@ -71,7 +71,7 @@ const VerifyEmail = () => {
                   <InputOTPGroup key={index}>
                     <InputOTPSlot
                       index={index}
-                      className="sm:w-12 sm:h-12 w-9 h-9 text-center text-xl font-bold" // Increase size here
+                      className="sm:w-12 sm:h-12 w-9 h-9 text-center sm:text-xl text-lg font-bold" // Increase size here
                     />
                   </InputOTPGroup>
                 ))}
