@@ -10,9 +10,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import PasswordStrengthMeter from "@/components/PasswordStrengthMeter";
+import { useAuthStore } from "@/store/authStore";
 
 const SignUp = () => {
   const {
@@ -29,13 +31,19 @@ const SignUp = () => {
     },
   });
 
-  const password = watch("password");
-  const isLoading = false;
+  const navigate = useNavigate();
+  const { signup, isLoading, error } = useAuthStore();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
-    console.log(data);
-    reset();
+    const { name, email, password } = data;
+    try {
+      await signup(email, password, name);
+      navigate("/verify-email");
+      reset();
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error);
+    }
   };
 
   return (
@@ -106,7 +114,8 @@ const SignUp = () => {
                 {errors.password?.message}
               </p>
             </div>
-            <PasswordStrengthMeter password={password} />
+            {error && <p className="text-red-500 front-semibold">{error}</p>}
+            <PasswordStrengthMeter password={watch("password")} />
             <Button
               type="submit"
               className="w-full sm:text-lg"
