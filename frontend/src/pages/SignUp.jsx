@@ -61,11 +61,9 @@ const SignUp = () => {
                 id="first-name"
                 placeholder="Max"
               />
-              {errors.name && (
-                <p className="text-red-500" role="alert">
-                  {errors.name.message}
-                </p>
-              )}
+              <p className="text-red-500" role="alert">
+                {errors.name?.message}
+              </p>
             </div>
             <div className="grid gap-2">
               <Label className="sm:text-xl" htmlFor="email">
@@ -84,11 +82,9 @@ const SignUp = () => {
                 type="email"
                 placeholder="m@example.com"
               />
-              {errors.email && (
-                <p className="text-red-500" role="alert">
-                  {errors.email.message}
-                </p>
-              )}
+              <p className="text-red-500" role="alert">
+                {errors.email?.message}
+              </p>
             </div>
             <div className="grid gap-2">
               <Label className="sm:text-xl" htmlFor="password">
@@ -106,14 +102,16 @@ const SignUp = () => {
                 id="password"
                 type="password"
               />
-              {errors.password && (
-                <p className="text-red-500" role="alert">
-                  {errors.password.message}
-                </p>
-              )}
+              <p className="text-red-500" role="alert">
+                {errors.password?.message}
+              </p>
             </div>
             <PasswordStrengthMeter password={password} />
-            <Button type="submit" className="w-full sm:text-lg" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="w-full sm:text-lg"
+              disabled={isLoading}
+            >
               {isLoading ? (
                 <Loader className="w-6 h-6 animate-spin" />
               ) : (

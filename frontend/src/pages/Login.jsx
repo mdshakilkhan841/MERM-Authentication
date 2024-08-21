@@ -62,11 +62,9 @@ const Login = () => {
                 type="email"
                 placeholder="m@example.com"
               />
-              {errors.email && (
-                <p className="text-red-500" role="alert">
-                  {errors.email.message}
-                </p>
-              )}
+              <p className="text-red-500" role="alert">
+                {errors.email?.message}
+              </p>
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
@@ -92,11 +90,9 @@ const Login = () => {
                 id="password"
                 type="password"
               />
-              {errors.password && (
-                <p className="text-red-500" role="alert">
-                  {errors.password.message}
-                </p>
-              )}
+              <p className="text-red-500" role="alert">
+                {errors.password?.message}
+              </p>
             </div>
             <Button
               type="submit"
