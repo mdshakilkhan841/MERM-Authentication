@@ -1,3 +1,4 @@
+import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -29,12 +30,14 @@ const SignUp = () => {
   });
 
   const password = watch("password");
+  const isLoading = false;
+
   const onSubmit = (data) => {
     data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
     console.log(data);
     reset();
   };
-  
+
   return (
     <Card className="mx-auto max-w-lg">
       <CardHeader>
@@ -110,8 +113,12 @@ const SignUp = () => {
               )}
             </div>
             <PasswordStrengthMeter password={password} />
-            <Button type="submit" className="w-full sm:text-lg">
-              Create an account
+            <Button type="submit" className="w-full sm:text-lg" disabled={isLoading}>
+              {isLoading ? (
+                <Loader className="w-6 h-6 animate-spin" />
+              ) : (
+                "Create an account"
+              )}
             </Button>
           </div>
         </form>

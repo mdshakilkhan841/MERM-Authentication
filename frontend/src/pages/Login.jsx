@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
 const Login = () => {
   const {
     register,
@@ -29,6 +29,8 @@ const Login = () => {
     console.log(data);
     reset();
   };
+
+  const isLoading = false;
 
   return (
     <Card className="mx-auto max-w-lg">
@@ -96,8 +98,16 @@ const Login = () => {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full sm:text-lg mt-2">
-              Login
+            <Button
+              type="submit"
+              className="w-full sm:text-lg mt-2"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader className="w-6 h-6 animate-spin" />
+              ) : (
+                "Login"
+              )}
             </Button>
           </div>
         </form>
