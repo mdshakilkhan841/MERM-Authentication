@@ -25,7 +25,9 @@ const PasswordCriteria = ({ password }) => {
           ) : (
             <X className="sm:size-5 size-4 text-red-500" />
           )}
-          <label className={isValid && "text-green-500"}>{label}</label>
+          <label className={isValid ? "text-green-500" : undefined}>
+            {label}
+          </label>
         </div>
       ))}
     </div>

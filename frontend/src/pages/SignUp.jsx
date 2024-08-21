@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PasswordStrengthMeter from "@/components/PasswordStrengthMeter";
 
-export default function SignUp() {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
@@ -34,6 +34,7 @@ export default function SignUp() {
     console.log(data);
     reset();
   };
+  
   return (
     <Card className="mx-auto max-w-lg">
       <CardHeader>
@@ -47,7 +48,7 @@ export default function SignUp() {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-4 sm:w-96">
-            <div className="grid gap-2 text">
+            <div className="grid gap-2">
               <Label className="sm:text-xl" htmlFor="first-name">
                 Full name
               </Label>
@@ -124,4 +125,6 @@ export default function SignUp() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default SignUp;
