@@ -117,7 +117,7 @@ export default function SignUp() {
 
         <div className="mt-4 text-center sm:text-lg text-sm">
           Already have an account?{" "}
-          <Link to={"/login"} className="underline">
+          <Link to={"/login"} className="underline font-semibold">
             Log in
           </Link>
         </div>
