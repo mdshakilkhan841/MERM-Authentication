@@ -31,7 +31,7 @@ const VerifyEmail = () => {
   });
 
   console.log("🚀 ~ VerifyEmail ~ watch:", watch("otp"));
-  console.log("🚀 ~ VerifyEmail ~ errors:", errors);
+  console.log("🚀 ~ VerifyEmail ~ errors:", errors.otp?.message);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -57,7 +57,13 @@ const VerifyEmail = () => {
               maxLength={6}
               pattern={REGEXP_ONLY_DIGITS}
               value={watch("otp")}
-              {...register("otp", { required: true, minLength: 6 })}
+              {...register("otp", {
+                required: "Enter the 6-digit code",
+                minLength: {
+                  value: 6,
+                  message: "Enter the 6-digit code",
+                },
+              })}
               onChange={(value) => setValue("otp", value)}
             >
               <div className="flex justify-between w-full gap-3">
