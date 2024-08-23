@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuthStore } from "@/store/authStore";
 const Login = () => {
   const {
     register,
@@ -24,13 +25,21 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const navigate = useNavigate();
+  const { login, isLoading, error } = useAuthStore();
+
+  const onSubmit = async (data) => {
     data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
     console.log(data);
-    reset();
+    const { email, password } = data;
+    try {
+      await login(email, password);
+      navigate("/");
+      reset();
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error);
+    }
   };
-
-  const isLoading = false;
 
   return (
     <Card className="mx-auto max-w-lg">
@@ -94,6 +103,7 @@ const Login = () => {
                 {errors.password?.message}
               </p>
             </div>
+            {error && <p className="text-red-500 front-semibold">{error}</p>}
             <Button
               type="submit"
               className="w-full sm:text-lg mt-2"
