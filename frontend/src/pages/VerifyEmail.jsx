@@ -15,6 +15,9 @@ import {
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 // import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
 
 const VerifyEmail = () => {
   const {
@@ -33,12 +36,23 @@ const VerifyEmail = () => {
   console.log("🚀 ~ VerifyEmail ~ watch:", watch("otp"));
   console.log("🚀 ~ VerifyEmail ~ errors:", errors.otp?.message);
 
-  const onSubmit = (data) => {
+  const navigate = useNavigate();
+  const { verifyEMail, isLoading, error } = useAuthStore();
+
+  const onSubmit = async (data) => {
     console.log(data);
-    reset();
+    const { otp } = data;
+    try {
+      await verifyEMail(otp);
+      navigate("/");
+      toast.success("Email verified successfully");
+      reset();
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error);
+    }
   };
 
-  const isLoading = false;
+  // const isLoading = false;
 
   return (
     <Card className="mx-auto max-w-lg">
@@ -78,6 +92,7 @@ const VerifyEmail = () => {
               </div>
             </InputOTP>
 
+            {error && <p className="text-red-500 front-semibold">{error}</p>}
             <Button
               type="submit"
               className="w-full sm:h-11 sm:text-lg mt-2"
