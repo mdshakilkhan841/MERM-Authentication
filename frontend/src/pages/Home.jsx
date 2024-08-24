@@ -1,9 +1,11 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/authStore";
+import { Loader } from "lucide-react";
 import moment from "moment";
 const Home = () => {
-  const { user, error } = useAuthStore();
+  const { user, logout, isLoading, error } = useAuthStore();
   console.log("🚀 ~ Home ~ user:", user);
 
   return (
@@ -41,12 +43,21 @@ const Home = () => {
                 {moment(user?.createdAt).format("LL")}
               </div>
               <div>
-                <span className="font-semibold">Last Login:</span> {moment(user?.lastLogin).format("LLL")}
+                <span className="font-semibold">Last Login:</span>{" "}
+                {moment(user?.lastLogin).format("LLL")}
               </div>
             </div>
           </div>
           {error && <p className="text-red-500 front-semibold">{error}</p>}
         </div>
+        <Button
+          type="submit"
+          className="w-full sm:text-lg mt-2"
+          disabled={isLoading}
+          onClick={() => logout()}
+        >
+          {isLoading ? <Loader className="w-6 h-6 animate-spin" /> : "Logout"}
+        </Button>
       </CardContent>
     </Card>
   );
