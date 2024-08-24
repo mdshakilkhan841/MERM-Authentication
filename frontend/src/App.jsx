@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
 
 // Public Route Component
 const PublicRoute = ({ children }) => {
-  const { isAuthenticated, isCheckingAuth, user } = useAuthStore();
+  const { isAuthenticated, isCheckingAuth } = useAuthStore();
 
   if (isCheckingAuth) {
     return <div>Loading...</div>;
@@ -71,7 +71,7 @@ function App() {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
   if (isCheckingAuth) {
     return (
