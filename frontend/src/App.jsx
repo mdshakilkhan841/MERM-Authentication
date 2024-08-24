@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import VerifyEmail from "./pages/VerifyEmail";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -119,6 +121,22 @@ function App() {
             </PublicRoute>
           }
         />
+        <Route
+          path="/forgot-password"
+          element={
+            <PublicRoute>
+              <ForgotPassword />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/reset-password/:resetToken"
+          element={
+            <PublicRoute>
+              <ResetPassword />
+            </PublicRoute>
+          }
+        />
 
         {/* Verification Route */}
         <Route
@@ -129,6 +147,8 @@ function App() {
             </VerificationRoute>
           }
         />
+        
+        <Route path="*" element={<div>Page not found</div>} />
       </Routes>
       <Toaster />
     </div>

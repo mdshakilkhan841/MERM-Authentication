@@ -81,7 +81,7 @@ const Login = () => {
                   Password
                 </Label>
                 <Link
-                  href="#"
+                  to={"/forgot-password"}
                   className="ml-auto inline-block sm:text-xl underline"
                 >
                   Forgot your password?

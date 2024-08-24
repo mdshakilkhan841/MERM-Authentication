@@ -118,9 +118,9 @@ const forgotPassword = async (req, res) => {
         await user.save();
 
         //Send password reset email
-        await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/api/auth/reset-password/${resetToken}`);
+        await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
 
-        res.status(200).json({ success: true, message: "Password reset email sent" });
+        res.status(200).json({ success: true, message: "If an account exists for the email you entered, you will receive a password reset link shortly." });
     } catch (error) {
         console.log("🚀 ~ forgotPassword ~ error:", error)
         res.status(400).json({ success: false, message: error.message });
