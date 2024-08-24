@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,9 +33,6 @@ const VerifyEmail = () => {
       otp: "",
     },
   });
-
-  console.log("🚀 ~ VerifyEmail ~ watch:", watch("otp"));
-  console.log("🚀 ~ VerifyEmail ~ errors:", errors.otp?.message);
 
   const navigate = useNavigate();
   const { verifyEMail, isLoading, error } = useAuthStore();
