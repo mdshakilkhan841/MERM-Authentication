@@ -21,7 +21,6 @@ const sendVerificationEmail = async (email, verificationToken) => {
             html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken),
             category: "Email Verification",
         })
-        console.log("🚀 ~ sendVerificationEmail ~ response:", response)
     } catch (error) {
         console.log("🚀 ~ sendVerificationEmail ~ error:", error);
         throw new error("Error sending verification email:", error.message)
@@ -38,7 +37,6 @@ const sendWelcomeEmail = async (email, name) => {
             html: WELCOME_EMAIL_TEMPLATE.replace("{userName}", name),
             category: "Welcome Email",
         })
-        console.log("🚀 ~ sendVerificationEmail ~ response:", response);
     } catch (error) {
         console.log("🚀 ~ sendVerificationEmail ~ error:", error);
         throw new error("Error sending welcome email:", error.message)
@@ -55,9 +53,8 @@ const sendPasswordResetEmail = async (email, resetURL) => {
             html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
             category: "Password Reset Request",
         })
-        console.log("🚀 ~ sendPasswordResetEmail ~ response:", response)
     } catch (error) {
-        console.log("🚀 ~ sendPasswordResetEmail ~ error:", error)
+        console.log("🚀 ~ sendPasswordResetEmail ~ error:", error);
         throw new error("Error sending password reset email:", error.message)
     }
 }
@@ -72,9 +69,8 @@ const sendPasswordResetSuccessEmail = async (email) => {
             html: PASSWORD_RESET_SUCCESS_TEMPLATE,
             category: "Password Reset Successful",
         })
-        console.log("🚀 ~ sendPasswordResetSuccessEmail ~ response:", response)
     } catch (error) {
-        console.log("🚀 ~ sendPasswordResetSuccessEmail ~ error:", error)
+        console.log("🚀 ~ sendPasswordResetSuccessEmail ~ error:", error);
         throw new error("Error sending password reset success email:", error.message)
     }
 }

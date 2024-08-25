@@ -30,7 +30,6 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
-    console.log(data);
     const { email, password } = data;
     try {
       await login(email, password);

@@ -6,7 +6,6 @@ import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js
 import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from "../mail/mailtrap.js";
 
 const signup = async (req, res) => {
-    console.log("🚀 ~ signup ~ req:", req.body)
     const { email, password, name } = req.body;
     try {
         if (!email || !password || !name) {
@@ -37,7 +36,7 @@ const signup = async (req, res) => {
 
         res.status(201).json({ success: true, message: "User created successfully", user: { ...user._doc, password: undefined } });
     } catch (error) {
-        console.log("🚀 ~ signup ~ error:", error)
+        console.log("🚀 ~ signup ~ error:", error);
         res.status(400).json({ success: false, message: error.message });
     }
 }
@@ -85,7 +84,7 @@ const login = async (req, res) => {
 
         res.status(200).json({ success: true, message: "Login successful", user: { ...user._doc, password: undefined } });
     } catch (error) {
-        console.log("🚀 ~ login ~ error:", error)
+        console.log("🚀 ~ login ~ error:", error);
         res.status(400).json({ success: false, message: error.message });
     }
 }
@@ -95,7 +94,7 @@ const logout = async (req, res) => {
         res.clearCookie("token");
         res.status(200).json({ success: true, message: "Logout successfully" });
     } catch (error) {
-        console.log("🚀 ~ logout ~ error:", error)
+        console.log("🚀 ~ logout ~ error:", error);
         res.status(400).json({ success: false, message: error.message });
     }
 }
@@ -122,7 +121,7 @@ const forgotPassword = async (req, res) => {
 
         res.status(200).json({ success: true, message: "If an account exists for the email you entered, you will receive a password reset link shortly." });
     } catch (error) {
-        console.log("🚀 ~ forgotPassword ~ error:", error)
+        console.log("🚀 ~ forgotPassword ~ error:", error);
         res.status(400).json({ success: false, message: error.message });
     }
 }
@@ -153,7 +152,7 @@ const resetPassword = async (req, res) => {
 
         res.status(200).json({ success: true, message: "Password reset successfully" });
     } catch (error) {
-        console.log("🚀 ~ resetPassword ~ error:", error)
+        console.log("🚀 ~ resetPassword ~ error:", error);
         res.status(400).json({ success: false, message: error.message });
     }
 }

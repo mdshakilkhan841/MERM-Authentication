@@ -13,7 +13,7 @@ export const verifyToken = (req, res, next) => {
             next();
         });
     } catch (error) {
-        console.log("🚀 ~ verifyToken ~ error:", error)
+        console.log("🚀 ~ verifyToken ~ error:", error);
         res.status(401).json({ success: false, message: "Server Error" });
     }
 }

@@ -8,7 +8,6 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import VerifyEmail from "./pages/VerifyEmail";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 
@@ -66,10 +65,7 @@ const VerificationRoute = ({ children }) => {
 };
 
 function App() {
-  const { checkAuth, isAuthenticated, isCheckingAuth, user } = useAuthStore();
-  console.log("🚀 ~ App ~ isAuthenticated:", isAuthenticated);
-  console.log("🚀 ~ App ~ isCheckingAuth:", isCheckingAuth);
-  console.log("🚀 ~ App ~ user:", user?.isVerified);
+  const { checkAuth, isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
@@ -92,14 +88,6 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <ProtectedRoute>
-              <About />
             </ProtectedRoute>
           }
         />
@@ -147,7 +135,7 @@ function App() {
             </VerificationRoute>
           }
         />
-        
+
         <Route path="*" element={<div>Page not found</div>} />
       </Routes>
       <Toaster />

@@ -6,7 +6,6 @@ import { Loader } from "lucide-react";
 import moment from "moment";
 const Home = () => {
   const { user, logout, isLoading, error } = useAuthStore();
-  console.log("🚀 ~ Home ~ user:", user);
 
   return (
     <Card className="mx-auto max-w-lg">

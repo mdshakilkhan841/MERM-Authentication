@@ -29,7 +29,6 @@ const ForgotPassword = () => {
 
   const onSubmit = async (data) => {
     data.email = data.email.toLowerCase(); // Convert email to lowercase before submitting
-    console.log(data);
     const { email } = data;
     try {
       await forgotPassword(email);

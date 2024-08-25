@@ -14,7 +14,6 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-// import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
@@ -38,7 +37,6 @@ const VerifyEmail = () => {
   const { verifyEMail, isLoading, error } = useAuthStore();
 
   const onSubmit = async (data) => {
-    console.log(data);
     const { otp } = data;
     try {
       await verifyEMail(otp);
@@ -49,8 +47,6 @@ const VerifyEmail = () => {
       console.log("🚀 ~ onSubmit ~ error:", error);
     }
   };
-
-  // const isLoading = false;
 
   return (
     <Card className="mx-auto max-w-lg">

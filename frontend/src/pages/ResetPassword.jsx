@@ -25,7 +25,6 @@ const ResetPassword = () => {
   const { resetPassword, isLoading, error } = useAuthStore();
 
   const onSubmit = async (data) => {
-    console.log("🚀 ~ onSubmit ~ data:", data);
     const { password } = data;
     try {
       await resetPassword(resetToken, password);
