@@ -34,7 +34,7 @@ const sendWelcomeEmail = async (email, name) => {
             from: sender,
             to: recipients,
             subject: "Welcome to MERN-Auth",
-            html: WELCOME_EMAIL_TEMPLATE.replace("{userName}", name),
+            html: WELCOME_EMAIL_TEMPLATE.replace("{userName}", name).replace("{CLIENT_URL}", process.env.CLIENT_URL),
             category: "Welcome Email",
         })
     } catch (error) {
@@ -43,14 +43,14 @@ const sendWelcomeEmail = async (email, name) => {
     }
 }
 
-const sendPasswordResetEmail = async (email, resetURL) => {
+const sendPasswordResetEmail = async (email, RESET_URL) => {
     const recipients = [{ email: email }];
     try {
         const response = await client.send({
             from: sender,
             to: recipients,
             subject: "Reset Your Password",
-            html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
+            html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{RESET_URL}", RESET_URL),
             category: "Password Reset Request",
         })
     } catch (error) {
