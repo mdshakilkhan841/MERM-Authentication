@@ -46,14 +46,14 @@ const ForgotPassword = () => {
         </CardTitle>
         <CardDescription className="flex items-center justify-center text-center">
           {message ? (
-            <div className="border border-gray-400 bg-gray-200 rounded-full p-2 mt-4">
+            <span className="border border-gray-400 bg-gray-200 rounded-full p-2 mt-4">
               <MailIcon className="w-8 h-8" />
-            </div>
+            </span>
           ) : (
-            <p>
+            <span>
               Enter your email address <br /> we&apos;ll send you a password
               reset link to your email
-            </p>
+            </span>
           )}
         </CardDescription>
       </CardHeader>
