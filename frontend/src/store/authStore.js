@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "https://mern-authentication.onrender.com";
+const API_URL = "https://mern-jwt-authentication.vercel.app";
 
 axios.defaults.withCredentials = true;
 
