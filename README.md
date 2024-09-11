@@ -21,6 +21,7 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 
 - **React.js**: JavaScript library for building user interfaces
 - **Tailwind CSS**: Utility-first CSS framework for styling
+- **shadcn**: Component library for React, providing a set of pre-designed UI components and utilities
 - **Vite**: Fast and lean development environment for modern web projects
 
 ### Backend
@@ -124,9 +125,9 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 
 - **Register**: Create a new account using your email. A verification email will be sent to your inbox.
 - **Login**: Access your account using your registered email and password.
-- **Reset Password**: Reset your password if you forget it by providing your registered email.
+- **Reset Password**: Reset your password by providing your registered email if you forget it.
 - **Secure Routes**: Access protected routes only after logging in.
 
 ## Acknowledgments
-- Vercel for hosting the live demo
+- Render for hosting the live demo
 - Mailtrap for providing email testing services
