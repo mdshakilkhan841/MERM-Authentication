@@ -51,7 +51,7 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 
 2. **Backend Setup**:
 
-    - Create a `.env` file in the root directory and add your environment variables (MongoDB URI, JWT Secret, Mailtrap credentials, etc.).
+    - Create a `.env` file in the root directory and add your environment variables (`MONGO_URI`, `PORT`, `JWT_SECRET`, `MAILTRAP_TOKEN`, `MAILTRAP_ENDPOINT`, `CLIENT_URL="http://localhost:5173"`).
     - Install backend dependencies:
 
         ```bash
