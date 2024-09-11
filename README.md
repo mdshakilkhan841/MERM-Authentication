@@ -4,7 +4,7 @@ This is a full-stack web application that implements user authentication using J
 
 ## Demo
 
-You can check out the live demo of the application here: [MERN JWT Authentication](https://mern-jwt-authentication.vercel.app/).
+You can check out the live demo of the application here: [MERN JWT Authentication](https://mern-authentication-ix18.onrender.com/).
 
 ## Features
 
