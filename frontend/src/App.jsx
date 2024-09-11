@@ -10,6 +10,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Home from "./pages/Home";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import AnimatedBackground from "./components/ui/AnimatedBackground";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -81,6 +82,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-5">
+      <AnimatedBackground />
       <Routes>
         {/* Protected Routes */}
         <Route
@@ -135,7 +137,6 @@ function App() {
             </VerificationRoute>
           }
         />
-
         <Route path="*" element={<div>Page not found</div>} />
       </Routes>
       <Toaster />
