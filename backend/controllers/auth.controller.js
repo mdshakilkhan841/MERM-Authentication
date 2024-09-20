@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from "../mail/mailtrap.js";
+import { sendPasswordResetEmail, sendPasswordResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from "../mail/sendMail.js";
 
 const signup = async (req, res) => {
     const { email, password, name } = req.body;
@@ -27,12 +27,14 @@ const signup = async (req, res) => {
             verificationTokenExpireAt: Date.now() + 24 * 60 * 60 * 1000 //24 hours
         });
 
+        // Send verification email
+        await sendVerificationEmail(user.email, user.verificationToken);
+
         await user.save();
 
         //JWT Token
         generateTokenAndSetCookie(res, user._id);
-        // Send verification email
-        await sendVerificationEmail(user.email, user.verificationToken);
+
 
         res.status(201).json({ success: true, message: "User created successfully", user: { ...user._doc, password: undefined } });
     } catch (error) {
@@ -52,10 +54,10 @@ const verifyEmail = async (req, res) => {
         user.verificationToken = undefined;
         user.verificationTokenExpireAt = undefined;
 
-        await user.save();
-
         //Send Welcome Email
         await sendWelcomeEmail(user.email, user.name);
+        
+        await user.save();
 
         res.status(200).json({ success: true, message: "Email verified successfully", user: { ...user._doc, password: undefined } });
     } catch (error) {
@@ -113,12 +115,12 @@ const forgotPassword = async (req, res) => {
 
         user.resetPasswordToken = resetToken;
         user.resetPasswordExpireAt = resetTokenExpireAt;
-
-        await user.save();
-
+        
         //Send password reset email
         await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
-
+        
+        await user.save();
+        
         res.status(200).json({ success: true, message: "If an account exists for the email you entered, you will receive a password reset link shortly." });
     } catch (error) {
         console.log("🚀 ~ forgotPassword ~ error:", error);
@@ -146,10 +148,11 @@ const resetPassword = async (req, res) => {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpireAt = undefined;
 
-        await user.save();
         //Send password reset success email
         await sendPasswordResetSuccessEmail(user.email);
-
+        
+        await user.save();
+        
         res.status(200).json({ success: true, message: "Password reset successfully" });
     } catch (error) {
         console.log("🚀 ~ resetPassword ~ error:", error);

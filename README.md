@@ -12,7 +12,7 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 - User login with JWT authentication
 - Password reset functionality
 - Secure routes accessible only by authenticated users
-- Integration with Mailtrap for email services
+- Integration with Nodemailer for email services
 - Responsive UI built with React.js and Tailwind CSS
 
 ## Technologies Used
@@ -31,7 +31,7 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 - **MongoDB**: NoSQL database for storing user data
 - **Mongoose**: ODM (Object Data Modeling) library for MongoDB and Node.js
 - **JWT**: JSON Web Tokens for securing API routes
-- **Mailtrap**: Email testing tool for safe email development
+- **Nodemailer**: Email service for sending email verifications and password reset emails
 
 ## Installation and Setup
 
@@ -51,7 +51,7 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 
 2. **Backend Setup**:
 
-    - Create a `.env` file in the root directory and add your environment variables (`MONGO_URI`, `PORT`, `JWT_SECRET`, `MAILTRAP_TOKEN`, `MAILTRAP_ENDPOINT`, `CLIENT_URL="http://localhost:5173"`).
+    - Create a `.env` file in the root directory and add your environment variables (`MONGO_URI`, `PORT`, `JWT_SECRET`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`, `CLIENT_URL="http://localhost:5173"`).
     - Install backend dependencies:
 
         ```bash
@@ -130,4 +130,4 @@ You can check out the live demo of the application here: [MERN JWT Authenticatio
 
 ## Acknowledgments
 - Render for hosting the live demo
-- Mailtrap for providing email testing services
+- Nodemailer for providing email services
